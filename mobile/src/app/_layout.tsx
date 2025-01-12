@@ -17,7 +17,8 @@ export default function Layout() {
     Rubik_500Medium,
     Rubik_700Bold,
   });
-  if (!fontsLoaded) return null;
+
+  if (!fontsLoaded) return <Loading />;
 
   return (
     <Stack
