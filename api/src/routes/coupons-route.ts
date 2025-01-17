@@ -1,10 +1,10 @@
-import { Router } from "express"
+// import { Router } from "express"
 
-import { CouponsController } from "@/controllers/coupons-controller"
+// import { CouponsController } from "@/controllers/coupons-controller"
 
-const couponsRoutes = Router()
-const couponsController = new CouponsController()
+// const couponsRoutes = Router()
+// const couponsController = new CouponsController()
 
-couponsRoutes.patch("/:market_id", couponsController.update)
+// couponsRoutes.patch("/:market_id", couponsController.update)
 
-export { couponsRoutes }
+// export { couponsRoutes }

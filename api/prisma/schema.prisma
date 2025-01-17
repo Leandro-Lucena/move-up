@@ -31,7 +31,7 @@ model Market {
   id String  @id @default(uuid())
   name String
   description  String
-  coupons Int
+  // coupons Int
   
   latitude Float
   longitude Float
