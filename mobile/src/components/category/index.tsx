@@ -12,6 +12,11 @@ type Props = PressableProps & {
 
 export function Category({ name, iconId, isSelected = false, ...rest }: Props) {
   const Icon = categoriesIcons[iconId];
+
+  if (!Icon) {
+    console.warn(`Icon for ${iconId} not found`);
+    return null;
+  }
   return (
     <Pressable
       style={[s.container, isSelected && s.containerSelected]}

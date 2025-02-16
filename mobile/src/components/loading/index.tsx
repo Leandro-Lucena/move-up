@@ -3,5 +3,5 @@ import { s } from "./styles";
 import { colors } from "@/styles/theme";
 
 export function Loading() {
-  return <ActivityIndicator color={colors.green.base} style={s.container} />;
+  return <ActivityIndicator color={colors.blue.base} style={s.container} />;
 }

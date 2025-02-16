@@ -28,6 +28,7 @@ export default function Layout() {
         screenOptions={{
           headerShown: false,
           contentStyle: { backgroundColor: colors.gray[100] },
+          unmountOnBlur: false,
         }}
       />
     </GestureHandlerRootView>

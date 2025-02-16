@@ -33,12 +33,12 @@ export function Places({ data }: Props) {
         renderItem={({ item }) => (
           <Place
             data={item}
-            onPress={() => router.navigate(`/market/${item.id}`)}
+            onPress={() => router.navigate(`/establishment/${item.id}`)}
           />
         )}
         contentContainerStyle={s.content}
         ListHeaderComponent={() => (
-          <Text style={s.title}>Explore locais perto de você</Text>
+          <Text style={s.title}>Estabelecimentos encontrados</Text>
         )}
         showsVerticalScrollIndicator={false}
       />

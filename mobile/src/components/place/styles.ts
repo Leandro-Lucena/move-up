@@ -33,14 +33,4 @@ export const s = StyleSheet.create({
     fontFamily: fontFamily.regular,
     color: colors.gray[500],
   },
-  footer: {
-    flexDirection: "row",
-    gap: 7,
-    marginTop: 10,
-  },
-  tickets: {
-    fontSize: 12,
-    fontFamily: fontFamily.regular,
-    color: colors.gray[400],
-  },
 });

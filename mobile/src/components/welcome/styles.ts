@@ -3,10 +3,8 @@ import { colors, fontFamily } from "@/styles/theme";
 
 export const s = StyleSheet.create({
   logo: {
-    width: 48,
-    height: 48,
-    marginTop: 24,
-    marginBottom: 28,
+    marginBottom: 25,
+    marginHorizontal: "auto",
   },
   title: {
     fontSize: 24,

@@ -10,6 +10,6 @@ export const s = StyleSheet.create({
   },
   header: {
     padding: 24,
-    paddingTop: 56,
+    paddingTop: 24,
   },
 });

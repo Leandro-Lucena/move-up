@@ -11,7 +11,7 @@ datasource db {
 model Category {
   id String  @id @default(uuid())
   name String
-  markets Market[]
+  establishments  Establishment[]
 
   @@map("categories")
 }
@@ -21,17 +21,16 @@ model Rules {
   id String  @id @default(uuid())
   description String
 
-  marketId String @map("market_id")
-  market Market @relation(fields: [marketId], references: [id])
+  establishmentId String @map("establishment_id")
+  establishment Establishment @relation(fields: [establishmentId], references: [id])
 
   @@map("rules")
 }
 
-model Market {
+model Establishment {
   id String  @id @default(uuid())
   name String
   description  String
-  // coupons Int
   
   latitude Float
   longitude Float
@@ -45,5 +44,5 @@ model Market {
   
   rules Rules[]
 
-  @@map("markets")
+  @@map("establishments")
 }

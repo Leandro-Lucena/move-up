@@ -10,21 +10,24 @@ import { colors, fontFamily } from "@/styles/theme";
 import { Places } from "@/components/places";
 import { PlaceProps } from "@/components/place";
 import { Categories, CategoriesProps } from "@/components/categories";
+import { Zocial } from "@expo/vector-icons";
 
-type MarketsProps = PlaceProps & {
+type EstablishmentsProps = PlaceProps & {
   latitude: number;
   longitude: number;
 };
 
 const currentLocation = {
-  latitude: -23.561187293883442,
-  longitude: -46.656451388116494,
+  latitude: -20.4642286,
+  longitude: -54.6173566,
 };
 
 export default function Home() {
   const [categories, setCategories] = useState<CategoriesProps>([]);
   const [category, setCategory] = useState("");
-  const [markets, setMarkets] = useState<MarketsProps[]>([]);
+  const [establishments, setEstablishments] = useState<EstablishmentsProps[]>(
+    []
+  );
 
   async function fetchCategories() {
     try {
@@ -37,11 +40,11 @@ export default function Home() {
     }
   }
 
-  async function fetchMarkets() {
+  async function fetchEstablishments() {
     try {
       if (!category) return;
-      const { data } = await api.get("/markets/category/" + category);
-      setMarkets(data);
+      const { data } = await api.get("/establishments/category/" + category);
+      setEstablishments(data);
     } catch (error) {
       console.error(error);
       Alert.alert("Locais", "Erro ao buscar locais.");
@@ -66,23 +69,18 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetchMarkets();
+    fetchEstablishments();
   }, [category]);
 
   return (
     <View style={{ flex: 1, backgroundColor: "#cecece" }}>
-      <Categories
-        data={categories}
-        onSelect={setCategory}
-        selected={category}
-      />
       <MapView
         style={{ flex: 1 }}
         initialRegion={{
           latitude: currentLocation.latitude,
           longitude: currentLocation.longitude,
-          latitudeDelta: 0.01,
-          longitudeDelta: 0.01,
+          latitudeDelta: 0.02,
+          longitudeDelta: 0.02,
         }}
       >
         <Marker
@@ -94,7 +92,7 @@ export default function Home() {
           image={require("@/assets/location.png")}
         />
 
-        {markets.map((item) => (
+        {establishments.map((item) => (
           <Marker
             key={item.id}
             identifier={item.id}
@@ -103,8 +101,12 @@ export default function Home() {
               longitude: item.longitude,
             }}
             image={require("@/assets/pin.png")}
+            tappable={true}
           >
-            <Callout onPress={() => router.navigate(`/market/${item.id}`)}>
+            <Callout
+              onPress={() => router.navigate(`/establishment/${item.id}`)}
+              key={item.id}
+            >
               <View>
                 <Text
                   style={{
@@ -113,7 +115,7 @@ export default function Home() {
                     fontFamily: fontFamily.medium,
                   }}
                 >
-                  Nome do nome{/* {item.name} */}
+                  {item.name}
                 </Text>
 
                 <Text
@@ -123,15 +125,19 @@ export default function Home() {
                     fontFamily: fontFamily.regular,
                   }}
                 >
-                  Descrição do nome{item.address}
+                  {item.address}
                 </Text>
               </View>
             </Callout>
           </Marker>
         ))}
       </MapView>
-
-      <Places data={markets} />
+      <Places data={establishments} />
+      <Categories
+        data={categories}
+        onSelect={setCategory}
+        selected={category}
+      />
     </View>
   );
 }

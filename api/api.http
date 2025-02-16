@@ -1,15 +1,10 @@
 ### List categories
 GET http://localhost:3333/categories
 
-### List markets from specific category
+### List establishments  from specific category
 @category = 146b1a88-b3d3-4232-8b8f-c1f006f1e86d
-GET http://localhost:3333/markets/category/{{category}}
+GET http://localhost:3333/establishments /category/{{category}}
 
-### List details from specific market
-@market = def71683-e89f-4c3b-a652-868a02f54ae9
-GET http://localhost:3333/markets/{{market}}
-
-### Get a coupon and decrement from market
-@market = def71683-e89f-4c3b-a652-868a02f54ae9
-PATCH http://localhost:3333/coupons/{{market}}
-###
+### List details from specific establishment
+@establishment = def71683-e89f-4c3b-a652-868a02f54ae9
+GET http://localhost:3333/establishments /{{establishment}}

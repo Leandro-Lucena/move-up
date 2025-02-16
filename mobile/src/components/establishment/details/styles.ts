@@ -35,5 +35,4 @@ export const s = StyleSheet.create({
     color: colors.gray[500],
     marginBottom: 12,
   },
-  rule: {},
 });

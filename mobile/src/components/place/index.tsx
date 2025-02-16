@@ -14,7 +14,6 @@ export type PlaceProps = {
   id: string;
   name: string;
   description: string;
-  coupons: number;
   cover: string;
   address: string;
 };
@@ -32,11 +31,6 @@ export function Place({ data, ...rest }: Props) {
         <Text style={s.description} numberOfLines={2}>
           {data.description}
         </Text>
-
-        <View style={s.footer}>
-          <IconTicket size={16} color={colors.red.base} />
-          <Text style={s.tickets}>{data.coupons}</Text>
-        </View>
       </View>
     </TouchableOpacity>
   );
