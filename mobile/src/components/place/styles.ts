@@ -18,6 +18,7 @@ export const s = StyleSheet.create({
     height: 104,
     backgroundColor: colors.gray[200],
     borderRadius: 8,
+    marginBottom: 6,
   },
   content: {
     flex: 1,

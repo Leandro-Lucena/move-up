@@ -6,9 +6,8 @@ export const s = StyleSheet.create({
     backgroundColor: colors.gray[100],
   },
   content: {
-    gap: 12,
+    gap: 6,
     padding: 24,
-    paddingBottom: 100,
   },
   indicator: {
     width: 80,

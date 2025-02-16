@@ -1,16 +1,12 @@
-import { router } from "expo-router";
 import { useEffect, useState } from "react";
-import { Alert, View, Text } from "react-native";
-import MapView, { Callout, Marker } from "react-native-maps";
-// import * as Location from "expo-location";
+import { Alert, View, Image } from "react-native";
+import MapView, { Marker, MarkerPressEvent } from "react-native-maps";
 
 import { api } from "@/services/api";
-import { colors, fontFamily } from "@/styles/theme";
 
 import { Places } from "@/components/places";
 import { PlaceProps } from "@/components/place";
 import { Categories, CategoriesProps } from "@/components/categories";
-import { Zocial } from "@expo/vector-icons";
 
 type EstablishmentsProps = PlaceProps & {
   latitude: number;
@@ -28,6 +24,7 @@ export default function Home() {
   const [establishments, setEstablishments] = useState<EstablishmentsProps[]>(
     []
   );
+  const [pressedMarker, setPressedMarker] = useState("");
 
   async function fetchCategories() {
     try {
@@ -51,19 +48,6 @@ export default function Home() {
     }
   }
 
-  // async function getCurrentLocation() {
-  //   try {
-  //     const { granted } = await Location.requestForegroundPermissionsAsync();
-  //     if (!granted) return;
-  //     const location = await Location.getCurrentPositionAsync();
-  //     const { latitude, longitude } = location.coords;
-  //     currentLocation.latitude = latitude;
-  //     currentLocation.longitude = longitude;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -71,6 +55,11 @@ export default function Home() {
   useEffect(() => {
     fetchEstablishments();
   }, [category]);
+
+  const handleMarkerPress = (event: MarkerPressEvent) => {
+    const markerId = event.nativeEvent.id;
+    setPressedMarker(markerId);
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "#cecece" }}>
@@ -100,39 +89,48 @@ export default function Home() {
               latitude: item.latitude,
               longitude: item.longitude,
             }}
-            image={require("@/assets/pin.png")}
-            tappable={true}
+            onPress={handleMarkerPress}
           >
-            <Callout
-              onPress={() => router.navigate(`/establishment/${item.id}`)}
-              key={item.id}
+            <View
+              style={{
+                position: "relative",
+                width: 35,
+                height: 35,
+              }}
             >
-              <View>
-                <Text
+              {pressedMarker === item.id && (
+                <View
                   style={{
-                    fontSize: 14,
-                    color: colors.gray[600],
-                    fontFamily: fontFamily.medium,
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    backgroundColor: "red",
+                    opacity: 0.3,
+                    borderRadius: 100,
                   }}
-                >
-                  {item.name}
-                </Text>
-
-                <Text
-                  style={{
-                    fontSize: 12,
-                    color: colors.gray[600],
-                    fontFamily: fontFamily.regular,
-                  }}
-                >
-                  {item.address}
-                </Text>
-              </View>
-            </Callout>
+                />
+              )}
+              <Image
+                source={require("@/assets/pin.png")}
+                style={{
+                  marginTop: 8,
+                  width: "100%",
+                  height: "100%",
+                  resizeMode: "contain",
+                  transform: [{ scale: pressedMarker === item.id ? 1.2 : 1 }],
+                }}
+              />
+            </View>
           </Marker>
         ))}
       </MapView>
-      <Places data={establishments} />
+      <Places
+        data={establishments}
+        selectedId={pressedMarker}
+        setPressedMarker={setPressedMarker}
+      />
       <Categories
         data={categories}
         onSelect={setCategory}
