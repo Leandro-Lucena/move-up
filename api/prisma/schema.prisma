@@ -1,0 +1,49 @@
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id String  @id @default(uuid())
+  name String
+  establishments  Establishment[]
+
+  @@map("categories")
+}
+
+
+model Rules {
+  id String  @id @default(uuid())
+  description String
+
+  establishmentId String @map("establishment_id")
+  establishment Establishment @relation(fields: [establishmentId], references: [id])
+
+  @@map("rules")
+}
+
+model Establishment {
+  id String  @id @default(uuid())
+  name String
+  description  String
+  
+  latitude Float
+  longitude Float
+
+  address String
+  phone String
+  cover String
+  
+  categoryId String @map("category_id")
+  category Category @relation(fields: [categoryId], references: [id])
+  
+  rules Rules[]
+
+  @@map("establishments")
+}

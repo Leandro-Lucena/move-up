@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: move-up
+    ports:
+      - "8081:8081"
+      - "3333:3333"
+    volumes:
+      - .:/app
+    environment:
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.15.8
+      - API_PORT=3333
+    tty: true
+    command: /bin/sh -c "./run.sh"
