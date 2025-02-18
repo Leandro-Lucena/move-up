@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: move-up
+    environment:
+      - API_PORT=3333
+      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.15.12
+    ports:
+      - "3333:3333"
+      - "8081:8081"
+    volumes:
+      - .:/app
+    command: sh -c "exec ./run.sh"
+    networks:
+      - app-network
+    stdin_open: true
+    tty: true
+networks:
+  app-network:
+    driver: bridge
