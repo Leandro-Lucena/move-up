@@ -6,7 +6,7 @@ services:
     container_name: move-up
     environment:
       - API_PORT=3333
-      - REACT_NATIVE_PACKAGER_HOSTNAME=192.168.15.12
+      - REACT_NATIVE_PACKAGER_HOSTNAME=<YOUR_IP>
     ports:
       - "3333:3333"
       - "8081:8081"
