@@ -20,7 +20,7 @@ Este projeto tem como objetivo principal testar e apresentar conhecimentos adqui
 
 ### Conteinerização
 
-- **Docker**: Utilizado para a containerização do ambiente de desenvolvimento, tanto para o backend quanto para o frontend, garantindo um ambiente consistente e facilmente replicável.
+- **Docker**: Utilizado para a containerização do ambiente de desenvolvimento, garantindo um ambiente consistente e facilmente replicável.
 
 ## Objetivo do Projeto
 
@@ -28,9 +28,12 @@ Este projeto é desenvolvido com o propósito de **apresentar habilidades técni
 
 Não se trata de um projeto de produção ou um aplicativo pronto para uso comercial, mas sim uma oportunidade de aprender, testar e demonstrar o uso dessas tecnologias em um ambiente prático.
 
-### \*\* Observação Importante \*\*
+### \*\* Observações Importantes \*\*
 
-A localização do usuário e todos os endereços e geolocalizações dos estabelecimentos mostrados no aplicativo são **fictícios**. A cidade de **Campo Grande - MS** foi escolhida para fins de teste no mapa, mas as localizações e dados exibidos não correspondem a locais reais. Caso haja alguma similaridade com estabelecimentos ou lugares reais, isso é **mera coincidência**.
+- Esse container não foi otimizado para produção, sendo apenas uma solução prática para o desenvolvimento local.
+  Para facilitar os testes no ambiente de desenvolvimento, foi criado um script .sh que inicia tanto o Node.js quanto o Expo ao montar o container. Isso simplifica a execução do projeto e evita a necessidade de rodar múltiplos containers separadamente.
+
+- A localização do usuário e todos os endereços e geolocalizações dos estabelecimentos mostrados no aplicativo são **fictícios**. A cidade de **Campo Grande - MS** foi escolhida para fins de teste no mapa, mas as localizações e dados exibidos não correspondem a locais reais. Caso haja alguma similaridade com estabelecimentos ou lugares reais, isso é **mera coincidência**.
 
 ## Teste em sua própria máquina
 
