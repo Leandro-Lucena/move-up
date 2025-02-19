@@ -1,89 +1,89 @@
 # MoveUp
 
-MoveUp é um aplicativo que permite descobrir academias, estúdios de artes marciais, centros esportivos e outros estabelecimentos dedicados à saúde, permitindo que os usuários encontrem atividades, treinos e produtos para melhorar seu condicionamento físico e qualidade de vida.
+MoveUp is an app that allows users to discover gyms, martial arts studios, sports centers and other establishments dedicated to health, allowing users to find activities, training and products to improve their physical fitness and quality of life.
 
-Este projeto tem como objetivo principal testar e apresentar conhecimentos adquiridos em tecnologias modernas de desenvolvimento de software.
+This project aims to test and present knowledge acquired in modern software development technologies.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 ### Frontend
 
-- **React Native**: Framework para o desenvolvimento de aplicativos móveis multiplataforma.
-- **Expo**: Ferramenta para desenvolvimento rápido e fácil de aplicativos React Native.
+- **React Native**: A framework for developing cross-platform mobile apps.
+- **Expo**: A tool for rapid development and easy development of React Native apps.
 
 ### Backend
 
-- **Node.js**: Ambiente de execução para JavaScript no servidor.
-- **Express**: Framework minimalista para Node.js, utilizado para construir a API.
-- **Prisma**: ORM (Object Relational Mapping) para facilitar a interação com o banco de dados.
-- **SQLite**: Banco de dados relacional leve e embutido, utilizado para persistência de dados no backend.
+- **Node.js**: A runtime environment for JavaScript on the server.
+- **Express**: A minimalistic framework for Node.js, used to build the API.
+- **Prisma**: An ORM (Object Relational Mapping) for facilitating interaction with the database.
+- **SQLite**: A lightweight, embedded relational database, used for data persistence in the backend.
 
-### Conteinerização
+### Containerization
 
-- **Docker**: Utilizado para a containerização do ambiente de desenvolvimento, garantindo um ambiente consistente e facilmente replicável.
+- **Docker**: Used for containerizing the development environment, ensuring a consistent and easily replicable environment.
 
-## Objetivo do Projeto
+## Project Goal
 
-Este projeto é desenvolvido com o propósito de **apresentar habilidades técnicas** e **demonstrar proficiência no uso de ferramentas modernas de desenvolvimento**.
+This project is developed with the purpose of **demonstrating technical skills** and **showcasing proficiency in the use of modern development tools**.
 
-Não se trata de um projeto de produção ou um aplicativo pronto para uso comercial, mas sim uma oportunidade de aprender, testar e demonstrar o uso dessas tecnologias em um ambiente prático.
+It is not a production-ready project or a commercial app, but rather an opportunity to learn, test and demonstrate the use of these technologies in a practical environment.
 
-### \*\* Observações Importantes \*\*
+### **Important Notes**
 
-- Esse container não foi otimizado para produção, sendo apenas uma solução prática para o desenvolvimento local.
-  Para facilitar os testes no ambiente de desenvolvimento, foi criado um script .sh que inicia tanto o Node.js quanto o Expo ao montar o container. Isso simplifica a execução do projeto e evita a necessidade de rodar múltiplos containers separadamente.
+- The container is not optimized for production, but rather a practical solution for local development.
+  To facilitate testing in the development environment, a .sh script was created that starts both Node.js and Expo when mounting the container. This simplifies the execution of the project and avoids the need to run multiple containers separately.
 
-- A localização do usuário e todos os endereços e geolocalizações dos estabelecimentos mostrados no aplicativo são **fictícios**. A cidade de **Campo Grande - MS** foi escolhida para fins de teste no mapa, mas as localizações e dados exibidos não correspondem a locais reais. Caso haja alguma similaridade com estabelecimentos ou lugares reais, isso é **mera coincidência**.
+- The user's location and all addresses and geolocations of establishments shown in the app are **fictional**. The city of **Campo Grande - MS** was chosen for testing purposes on the map, but the locations and data displayed do not correspond to real places. If there is any similarity with real establishments or places, it is **mere coincidence**.
 
-## Teste em sua própria máquina
+## Test on your own machine
 
-### Pré-requisitos
+### Prerequisites
 
-Antes de rodar o projeto, certifique-se de ter os seguintes requisitos:
+Before running the project, make sure you have the following requirements:
 
-- **Docker**: O Docker deve estar instalado em sua máquina. [Instale o Docker](https://www.docker.com/get-started).
-- **Smartphone com Expo Go**: Um dispositivo Android ou iPhone com o aplicativo [Expo Go](https://expo.dev/tools#expo-go) instalado.
-- O dispositivo deve estar **conectado à mesma rede LAN** que a máquina que vai rodar a imagem Docker.
+- **Docker**: Docker must be installed on your machine. [Install Docker](https://www.docker.com/get-started).
+- **Smartphone with Expo Go**: An Android or iPhone device with the [Expo Go](https://expo.dev/tools#expo-go) app installed.
+- The device must be **connected to the same LAN network** as the machine that will run the Docker image.
 
-### 1. Clonar o repositório
+### 1. Clone the repository
 
-Primeiro, clone o repositório para sua máquina local. Você pode fazer isso de duas maneiras:
+First, clone the repository to your local machine. You can do this in two ways:
 
-- **Via Git**:
+- **Using Git**:
   ```bash
   git clone https://github.com/Leandro-Lucena/move-up.git
   ```
-- **Ou baixe o repositório** como ZIP diretamente do GitHub e extraia-o em seu diretório preferido.
+- **Or download the repository** as a ZIP directly from GitHub and extract it to your preferred directory.
 
-### 2. Atualizar o arquivo docker-compose.yml
+### 2. Update the docker-compose.yml file
 
-Após clonar o repositório, entre na pasta do projeto e edite o arquivo `docker-compose.yml`. Dentro deste arquivo, localize a seguinte linha que define a variável de ambiente:
+After cloning the repository, enter the project directory and edit the `docker-compose.yml` file. Inside this file, locate the following line that defines the environment variable:
 
 ```yaml
 environment:
   - REACT_NATIVE_PACKAGER_HOSTNAME=<YOUR_IP>
 ```
 
-Substitua `<YOUR_IP>` pelo IP da máquina onde o Docker estará rodando.
+Replace `<YOUR_IP>` with the IP of the machine where Docker will be running.
 
-Isso garante que o Expo Go no seu dispositivo móvel consiga se conectar corretamente ao ambiente de desenvolvimento que está rodando no Docker.
+This ensures that Expo Go on your mobile device can connect correctly to the development environment running on Docker.
 
-### 3. Rodar o `docker-compose`
+### 3. Run `docker-compose`
 
-Agora, com o arquivo `docker-compose.yml` atualizado, dentro do diretório raiz do projeto, execute o seguinte comando no terminal:
+Now, with the `docker-compose.yml` file updated, within the root directory of the project, execute the following command in the terminal:
 
 ```bash
 docker-compose up
 ```
 
-Isso irá iniciar o processo de construção dos containers Docker e baixar todas as dependências necessárias. Esse processo pode demorar um pouco na primeira vez, mas uma vez feito, será mais rápido nas próximas execuções.
+This will start the process of building the Docker containers and downloading all the necessary dependencies. This process may take a while the first time, but once done, it will be faster in subsequent executions.
 
-### 4. Conectar o smartphone
+### 4. Connect the smartphone
 
-Abra o Expo Go no seu dispositivo e leia o QR Code que apareceu no terminal do computador para começar a execução do aplicativo.
+Open Expo Go on your device and scan the QR Code that appeared in the computer terminal to start running the application.
 
-### 5. Testar o Aplicativo
+### 5. Test the Application
 
-Após escanear o QR Code com o Expo Go, o Expo iniciará a construção do aplicativo. Isso pode levar algum tempo na primeira vez, mas uma vez que o processo esteja completo, o aplicativo MoveUp estará disponível no seu smartphone para testes.
+After scanning the QR Code with Expo Go, Expo will start building the application. This may take some time the first time, but once the process is complete, the MoveUp app will be available on your smartphone for testing.
 
-Agora você pode começar a testar o aplicativo e explorar suas funcionalidades!
+Now you can start testing the app and exploring its features!
